@@ -1,0 +1,6 @@
+{
+  "test/index_test.py::TestBasicHasManyThrough": true,
+  "test/index_test.py::TestBasicHasManyThrough::test_actors_have_many_roles": true,
+  "test/index_test.py::TestBasicHasManyThrough::test_return_catwoman_actors": true,
+  "test/index_test.py::TestBasicHasManyThrough::test_return_christian_bales_roles": true
+}

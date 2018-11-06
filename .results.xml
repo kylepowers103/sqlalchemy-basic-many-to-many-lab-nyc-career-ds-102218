@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="3" name="pytest" skips="0" tests="7" time="0.444"><testcase classname="test.index_test.TestBasicHasManyThrough" file="test/index_test.py" line="8" name="test_actors" time="0.0031280517578125"></testcase><testcase classname="test.index_test.TestBasicHasManyThrough" file="test/index_test.py" line="14" name="test_actors_have_many_roles" time="0.0047185420989990234"><failure message="AssertionError: &apos;Batman&apos; != &apos;Dr. Michael Burry&apos;
+- Batman
++ Dr. Michael Burry">self = &lt;index_test.TestBasicHasManyThrough testMethod=test_actors_have_many_roles&gt;
+
+    def test_actors_have_many_roles(self):
+        bale = session.query(Actor).filter_by(name=&quot;Christian Bale&quot;).one()
+        self.assertEqual(len(bale.roles), 3)
+&gt;       self.assertEqual(bale.roles[0].character, &apos;Dr. Michael Burry&apos;)
+E       AssertionError: &apos;Batman&apos; != &apos;Dr. Michael Burry&apos;
+E       - Batman
+E       + Dr. Michael Burry
+
+test/index_test.py:18: AssertionError</failure></testcase><testcase classname="test.index_test.TestBasicHasManyThrough" file="test/index_test.py" line="36" name="test_return_catwoman_actors" time="0.0047304630279541016"><failure message="AssertionError: Lists differ: [&apos;Anne Hathaway&apos;, &apos;Michelle Pfeiffer&apos;] != [&apos;Michelle Pfeiffer&apos;, &apos;Anne Hathaway&apos;]
+
+First differing element 0:
+&apos;Anne Hathaway&apos;
+&apos;Michelle Pfeiffer&apos;
+
+- [&apos;Anne Hathaway&apos;, &apos;Michelle Pfeiffer&apos;]
++ [&apos;Michelle Pfeiffer&apos;, &apos;Anne Hathaway&apos;]">self = &lt;index_test.TestBasicHasManyThrough testMethod=test_return_catwoman_actors&gt;
+
+    def test_return_catwoman_actors(self):
+        actors = return_catwoman_actors(session)
+        self.assertEqual(len(actors), 2)
+    
+        names = []
+        for actor in actors:
+            names.append(actor.name)
+&gt;       self.assertEqual(names, [&apos;Michelle Pfeiffer&apos;, &apos;Anne Hathaway&apos;])
+E       AssertionError: Lists differ: [&apos;Anne Hathaway&apos;, &apos;Michelle Pfeiffer&apos;] != [&apos;Michelle Pfeiffer&apos;, &apos;Anne Hathaway&apos;]
+E       
+E       First differing element 0:
+E       &apos;Anne Hathaway&apos;
+E       &apos;Michelle Pfeiffer&apos;
+E       
+E       - [&apos;Anne Hathaway&apos;, &apos;Michelle Pfeiffer&apos;]
+E       + [&apos;Michelle Pfeiffer&apos;, &apos;Anne Hathaway&apos;]
+
+test/index_test.py:44: AssertionError</failure></testcase><testcase classname="test.index_test.TestBasicHasManyThrough" file="test/index_test.py" line="27" name="test_return_christian_bales_roles" time="0.0029969215393066406"><failure message="AssertionError: Lists differ: [&apos;Batman&apos;, &apos;Dr. Michael Burry&apos;, &apos;Patrick Bateman&apos;] != [&apos;Dr. Michael Burry&apos;, &apos;Patrick Bateman&apos;, &apos;Batman&apos;]
+
+First differing element 0:
+&apos;Batman&apos;
+&apos;Dr. Michael Burry&apos;
+
+- [&apos;Batman&apos;, &apos;Dr. Michael Burry&apos;, &apos;Patrick Bateman&apos;]
++ [&apos;Dr. Michael Burry&apos;, &apos;Patrick Bateman&apos;, &apos;Batman&apos;]">self = &lt;index_test.TestBasicHasManyThrough testMethod=test_return_christian_bales_roles&gt;
+
+    def test_return_christian_bales_roles(self):
+        roles = return_christian_bales_roles(session)
+        self.assertEqual(len(roles), 3)
+    
+        characters = []
+        for role in roles:
+            characters.append(role.character)
+&gt;       self.assertEqual(characters, [&apos;Dr. Michael Burry&apos;, &apos;Patrick Bateman&apos;, &apos;Batman&apos;])
+E       AssertionError: Lists differ: [&apos;Batman&apos;, &apos;Dr. Michael Burry&apos;, &apos;Patrick Bateman&apos;] != [&apos;Dr. Michael Burry&apos;, &apos;Patrick Bateman&apos;, &apos;Batman&apos;]
+E       
+E       First differing element 0:
+E       &apos;Batman&apos;
+E       &apos;Dr. Michael Burry&apos;
+E       
+E       - [&apos;Batman&apos;, &apos;Dr. Michael Burry&apos;, &apos;Patrick Bateman&apos;]
+E       + [&apos;Dr. Michael Burry&apos;, &apos;Patrick Bateman&apos;, &apos;Batman&apos;]
+
+test/index_test.py:35: AssertionError</failure></testcase><testcase classname="test.index_test.TestBasicHasManyThrough" file="test/index_test.py" line="45" name="test_return_number_of_batman_actors" time="0.003126382827758789"></testcase><testcase classname="test.index_test.TestBasicHasManyThrough" file="test/index_test.py" line="11" name="test_roles" time="0.002019643783569336"></testcase><testcase classname="test.index_test.TestBasicHasManyThrough" file="test/index_test.py" line="21" name="test_roles_have_many_actors" time="0.0033311843872070312"></testcase></testsuite>
